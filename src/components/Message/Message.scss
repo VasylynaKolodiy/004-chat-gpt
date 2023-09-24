@@ -1,0 +1,93 @@
+@import "./src/variables/variables";
+
+.message {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  background-color: $color-background-gray;
+  color: $color-text-white;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+
+  &:hover {
+    .message__buttons-edit {
+      visibility: visible;
+    }
+
+    .message__buttons-edit.hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: 38rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 auto;
+  }
+
+  &__info {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__avatar {
+    min-width: 36px;
+    height: 36px;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    display: block;
+    overflow-wrap: anywhere;
+    background-color: transparent;
+    outline: none;
+    color: $color-text-white;
+    border: none;
+  }
+
+  &.answer {
+    background-color: $color-background-light-gray;
+  }
+
+  &__buttons-edit {
+    cursor: pointer;
+    visibility: hidden;
+    transition: .3s linear;
+  }
+
+  &__buttons{
+    max-width: 38rem;
+    margin: 0 auto;
+    gap: 1rem;
+    display: none;
+
+    & button{
+      cursor: pointer;
+    }
+
+    &.visible{
+      display: flex;
+    }
+  }
+
+}

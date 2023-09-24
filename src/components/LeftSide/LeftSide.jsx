@@ -1,0 +1,41 @@
+import React, {useState} from 'react';
+import './LeftSide.scss';
+import Button from "../UI/Button/Button";
+import {ReactComponent as IconAddButton} from "../../assets/img/add-chat-button.svg";
+import {ReactComponent as IconCloseButton} from "../../assets/img/close-aside-button.svg";
+
+const LeftSide = () => {
+    const [isVisibleAside, setIsVisibleAside] = useState(true);
+
+    return (
+        <aside className={`aside ${isVisibleAside ? 'visible' : ''}`}>
+            <div className='aside__buttons'>
+                <Button className='aside__button button-add'>
+                    <div className='aside__button-inner'>
+                        <div className='aside__button-img'>
+                            <IconAddButton/>
+                        </div>
+                        <div className='aside__button-text'>New Chat</div>
+                    </div>
+                </Button>
+
+                <Button
+                    className={`aside__button button-close ${isVisibleAside ? '' : 'visible'}`}
+                    title={`${isVisibleAside ? 'Close sidebar' : 'Open sidebar'}`}
+                    onClick={() => setIsVisibleAside(!isVisibleAside)}
+                >
+                    <div className='aside__button-inner'>
+                        <IconCloseButton/>
+                    </div>
+                </Button>
+            </div>
+
+            <div className='aside__chat-list'>
+
+            </div>
+
+        </aside>
+    );
+};
+
+export default LeftSide;

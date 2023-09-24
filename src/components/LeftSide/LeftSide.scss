@@ -1,0 +1,60 @@
+@import "src/variables/variables";
+
+.aside {
+  width: -0;
+  height: 100vh;
+  background-color: $color-background-black;
+  padding: 8px 0;
+  transition: .3s linear;
+
+  &.visible {
+    width: 260px;
+    padding: 8px;
+
+    .aside__buttons {
+      gap: .5rem;
+    }
+
+    #button.button-add {
+      padding: 0.25rem 0.75rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  &__button-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  #button.button-add {
+    width: 100%;
+    white-space: nowrap;
+    padding: 0;
+  }
+
+  #button.button-close {
+    position: relative;
+    width: 44px;
+    z-index: 30;
+    margin-left: .5rem;
+    transition: .3s linear;
+
+    &.visible {
+      background-color: $color-background-gray;
+      border: none;
+    }
+
+    &:hover {
+      background-color: $color-background-light-gray;
+    }
+  }
+}

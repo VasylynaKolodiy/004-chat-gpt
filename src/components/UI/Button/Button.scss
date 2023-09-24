@@ -1,0 +1,12 @@
+@import './src/variables/variables.scss';
+
+#button{
+    padding: 0.25rem 0.75rem;
+    border: 1px solid $color-border-gray;
+    border-radius: 0.375rem;
+    min-height: 44px;
+    height: 2.75rem;
+    background-color: transparent;
+    color: $color-text-white;
+    cursor: pointer;
+}

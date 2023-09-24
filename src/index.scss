@@ -1,0 +1,36 @@
+@import 'variables/variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.App {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: $color-text-white;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $color-background-gray;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-text-gray;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $color-text-white;
+}
