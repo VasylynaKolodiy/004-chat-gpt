@@ -1,13 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './Chat.scss'
 import {ReactComponent as IconSendButton} from "../../assets/img/send-message-button.svg";
-import Message from "../Message/Message";
-import TypingEffect from "../UI/TypingEffect/TypingEffect";
+import MessageArray from "../MessageArray/MessageArray";
 
 const Chat = () => {
 
     const [messageList, setMessageList] = useState([]);
-    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
     const [showAnswer, setShowAnswer] = useState(false);
     const messagesEndRef = useRef(null);
 
@@ -19,8 +18,8 @@ const Chat = () => {
     };
 
     const sendMessage = () => {
-        setMessageList([...messageList, message]);
-        setMessage('');
+        setMessageList([...messageList, messages]);
+        setMessages([]);
         showAnswerAfterDelay();
     };
 
@@ -46,21 +45,26 @@ const Chat = () => {
         scrollChatToBottom();
     }, [messageList]);
 
+    console.log('messageList', messageList);
 
     return (
         <main className='chat'>
             <div className='chat__container'>
 
                 <section className='chat__top'>
-                    {messageList.map((message, index) => (
+                    {messageList.map((messageArray, index) => (
                         <div key={index}>
-                            <Message message={message} isAnswer={false} />
-                            <TypingEffect message={message} isAnswer={true} scrollChatToBottom={scrollChatToBottom}/>
+                            <MessageArray
+                                messageArray={messageArray}
+                                setMessageList={setMessageList}
+                                messageList={messageList}
+                                scrollChatToBottom={scrollChatToBottom}
+                                indexInList={index}
+                            />
                         </div>
                     ))}
                     <div ref={messagesEndRef} />
                 </section>
-
 
                 <section className='chat__bottom'>
                     <div className="chat__bottom-message">
@@ -69,8 +73,8 @@ const Chat = () => {
                                 className='textarea'
                                 placeholder="Send a message"
                                 rows={1}
-                                value={message}
-                                onChange={(event) => setMessage(event.target.value)}
+                                value={messages}
+                                onChange={(event) => setMessages([event.target.value])}
                                 onKeyDown={pressDownKeyEnter}
                                 autoFocus={true}
                                 onInput={(event) => autoGrowTextarea(event.target)}

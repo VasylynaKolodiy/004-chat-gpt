@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 1.5rem;
+  position: relative;
 
   &:hover {
     .message__buttons-edit {
@@ -75,19 +76,42 @@
     transition: .3s linear;
   }
 
-  &__buttons{
+  &__buttons {
     max-width: 38rem;
     margin: 0 auto;
     gap: 1rem;
     display: none;
 
-    & button{
+    & button {
       cursor: pointer;
     }
 
-    &.visible{
+    &.visible {
       display: flex;
     }
   }
 
+  &__slider-counter {
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    padding: 5px;
+    border-radius: 50%;
+  }
+}
+
+.slick-arrow.slick-next {
+  left: 53px;
+  top: 43px;
+}
+
+.slick-arrow.slick-prev {
+  left: 0;
+  top: 43px;
+  z-index: 3;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 14px !important;
 }

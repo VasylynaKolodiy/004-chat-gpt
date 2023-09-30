@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import Message from "../../Message/Message";
+import imgAvatarGpt from "../../../assets/img/avatar-gpt.png";
 
-const TypingEffect = ({message, isAnswer, scrollChatToBottom}) => {
+const TypingEffect = ({message, scrollChatToBottom}) => {
     const [text, setText] = useState('');
     const typingSpeed = 50;
 
@@ -25,7 +25,16 @@ const TypingEffect = ({message, isAnswer, scrollChatToBottom}) => {
     }, [text]);
 
     return (
-        <Message message={text} isAnswer={isAnswer}/>
+        <div className='message answer'>
+            <div className="message__inner">
+                <div className='message__avatar'>
+                    <img src={ imgAvatarGpt} alt='avatar'/>
+                </div>
+                <div className='message__text'>
+                    {text}
+                </div>
+            </div>
+        </div>
     );
 };
 
