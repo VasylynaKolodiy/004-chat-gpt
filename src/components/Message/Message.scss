@@ -109,7 +109,7 @@
     transition: .3s linear;
 
     &.hidden{
-      color: $color-background-light-gray;
+      color: $color-background-gray;
       cursor: initial;
       pointer-events: none;
     }
