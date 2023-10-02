@@ -14,7 +14,7 @@ const MessageArray = ({messageArray, messageList, setMessageList, scrollChatToBo
 
     const settings = {
         dots: false,
-        arrows: true,
+        arrows: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,

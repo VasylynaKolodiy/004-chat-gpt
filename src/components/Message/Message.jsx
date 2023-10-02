@@ -9,8 +9,8 @@ const Message = ({message, isAnswer, setMessageList, messageList, index, indexIn
     const [isEditButtonsVisible, setIsEditButtonsVisible] = useState(false);
     const [newMes, setNewMes] = useState(message);
 
-    const changeSlide = () => {
-        sliderRef.current.slickGoTo(index + 1);
+    const changeSlide = (value = 1) => {
+        sliderRef.current.slickGoTo(index + value);
     };
 
     const submitChanges = () => {
@@ -32,8 +32,24 @@ const Message = ({message, isAnswer, setMessageList, messageList, index, indexIn
     return (
         <div className={`message ${isAnswer ? 'answer' : ''}`}>
             <div className="message__inner">
-                {messageList[indexInList].length > 1  && (
-                    <div className='message__slider-counter'>{index + 1}/{messageList[indexInList].length}</div>
+                {messageList[indexInList].length > 1 && (
+                    <div className='message__slider-counter'>
+                        <div
+                            className={`message__slider-arrow left ${index === 0 ? 'hidden' : ''}`}
+                            onClick={() => changeSlide(-1)}
+                        > ←
+                        </div>
+
+                        <div className='message__slider-value'>
+                            {index + 1}/{messageList[indexInList].length}
+                        </div>
+
+                        <div
+                            className={`message__slider-arrow right ${index === messageList[indexInList].length - 1 ? 'hidden' : ''}`}
+                            onClick={() => changeSlide()}
+                        > →
+                        </div>
+                    </div>
                 )}
 
                 <div className='message__avatar'>
@@ -76,7 +92,6 @@ const Message = ({message, isAnswer, setMessageList, messageList, index, indexIn
                     </button>
                 </div>
             )}
-
         </div>
     );
 };

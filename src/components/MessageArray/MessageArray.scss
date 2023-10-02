@@ -1,2 +1,16 @@
+.slick-arrow.slick-next {
+  left: 53px;
+  top: 43px;
+}
 
+.slick-arrow.slick-prev {
+  left: 0;
+  top: 43px;
+  z-index: 3;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 14px !important;
+}
 
