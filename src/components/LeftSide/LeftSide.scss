@@ -57,4 +57,15 @@
       background-color: $color-background-light-gray;
     }
   }
+
+  &__chat-list{
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+
+    &.active{
+      background-color: rgba($color-background-light-gray, 0.5);
+    }
+  }
 }

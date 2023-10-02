@@ -3,9 +3,7 @@ import './Chat.scss'
 import {ReactComponent as IconSendButton} from "../../assets/img/send-message-button.svg";
 import MessageArray from "../MessageArray/MessageArray";
 
-const Chat = () => {
-
-    const [messageList, setMessageList] = useState([]);
+const Chat = ({messageList, setMessageList}) => {
     const [messages, setMessages] = useState([]);
     const [showAnswer, setShowAnswer] = useState(false);
     const messagesEndRef = useRef(null);
@@ -19,6 +17,10 @@ const Chat = () => {
 
     const sendMessage = () => {
         setMessageList([...messageList, messages]);
+
+        // const updatedThemeList = [...themeList.slice(0, indexOfActive + 1), [...messageList, messages], ...themeList.slice(indexOfActive + 1, themeList.length)]
+        // setThemeList(updatedThemeList)
+
         setMessages([]);
         showAnswerAfterDelay();
     };
@@ -30,7 +32,7 @@ const Chat = () => {
     };
 
     const scrollChatToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        messagesEndRef.current?.scrollIntoView({behavior: "smooth"})
     }
 
     const autoGrowTextarea = (element) => {
@@ -45,14 +47,14 @@ const Chat = () => {
         scrollChatToBottom();
     }, [messageList]);
 
+
     console.log('messageList', messageList);
 
     return (
         <main className='chat'>
             <div className='chat__container'>
-
                 <section className='chat__top'>
-                    {messageList.map((messageArray, index) => (
+                    {messageList?.map((messageArray, index) => (
                         <div key={index}>
                             <MessageArray
                                 messageArray={messageArray}
@@ -63,7 +65,7 @@ const Chat = () => {
                             />
                         </div>
                     ))}
-                    <div ref={messagesEndRef} />
+                    <div ref={messagesEndRef}/>
                 </section>
 
                 <section className='chat__bottom'>
